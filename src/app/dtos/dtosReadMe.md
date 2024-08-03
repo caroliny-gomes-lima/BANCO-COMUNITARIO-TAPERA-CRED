@@ -6,3 +6,12 @@
 create-account.dto
 create-transaction.dto
 ```
+
+- exemplo:
+
+```bash
+export class CreateAccountDto {
+  clientId: string;
+  initialBalance: number;
+}
+```
