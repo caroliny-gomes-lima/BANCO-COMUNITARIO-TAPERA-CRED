@@ -4,8 +4,8 @@ import { AccountRepositoryImpl } from './infrastructure/repositories/account.rep
 import { TransactionRepositoryImpl } from './infrastructure/repositories/transaction.repository.impl';
 import { AccountEntity } from './infrastructure/database/account.entity';
 import { TransactionEntity } from './infrastructure/database/transaction.entity';
-import { TransactionController } from './app/ports/in/transaction.controller';
-import { AccountController } from './app/ports/in/account.controller';
+import { TransactionController } from './infrastructure/adapters/controllers/transaction.controller';
+import { AccountController } from './infrastructure/adapters/controllers/account.controller';
 import { AccountService } from './app/services/account.service';
 import { TransactionService } from './app/services/transaction.service';
 import { typeOrmConfig } from './infrastructure/database/typeorm.config';
