@@ -1,3 +1,18 @@
+<h3>Adaptadores de saída para o banco de dados</h3>
+
+- São as implementações dessas interfaces, que traduzem as chamadas internas para interações com sistemas externos. Fornecem a lógica específica para interagir com bancos de dados ou serviços externos. (é como se fosse o services)
+
+- Exemplo de scripts para implementar:
+
+```bash
+ClienteRepositoryImpl.ts
+GerenteRepositoryImpl.ts
+ContaRepositoryImpl.ts
+```
+
+- exemplo de código:
+
+```bash
 import { Injectable } from '@nestjs/common';
 import { Account } from '../../domain/models/account';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -51,3 +66,6 @@ export class AccountRepositoryImpl implements AccountRepository {
     });
   }
 }
+
+}
+```
