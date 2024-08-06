@@ -1,5 +1,5 @@
 <p align="center">
-  <h3>Estrutura do projeto segue os princípios da arquitetura hexagonal (também conhecida como arquitetura de portas e adaptadores).</h3>
+  <h3>A estrutura do projeto segue os princípios da arquitetura hexagonal (também conhecida como arquitetura de portas e adaptadores).</h3>
 </p>
 
 ```bash
