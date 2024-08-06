@@ -1,3 +1,40 @@
+src/
+|-- domain/
+| |-- entities/
+| | |-- Cliente.ts
+| | |-- Conta.ts
+| |-- services/
+| | |-- GerenciamentoDeConta.ts
+|
+|-- application/
+| |-- use-cases/
+| | |-- AbrirContaUseCase.ts
+|
+|-- ports/
+| |-- in/
+| | |-- AbrirContaInterface.ts
+| |-- out/
+| | |-- ClienteRepository.ts
+| | |-- ContaRepository.ts
+| | |-- ExternalApiService.ts # Interface para serviços externos
+|
+|-- infrastructure/
+| |-- adapters/
+| | |-- database/
+| | | |-- ClienteRepositoryImpl.ts
+| | | |-- ContaRepositoryImpl.ts
+| | |-- external/
+| | | |-- ExternalApiServiceImpl.ts # Implementação de adaptador para serviços externos
+|
+|-- controllers/
+| |-- ContaController.ts
+|
+|-- dto/
+| |-- AbrirContaDTO.ts
+|
+|-- services/
+| |-- NotificacaoServiceImpl.ts
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
