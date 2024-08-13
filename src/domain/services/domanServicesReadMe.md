@@ -1,21 +1,21 @@
 <h3>Serviços do Domínio</h3>
 
-- São classes que encapsulam lógica de negócio específica do domínio, que não pertence a uma única entidade. Eles lidam com operações complexas que podem envolver múltiplas entidades.
+- São classes que lidam com a lógica de negócio, exemplo: operações relacionadas ao cliente como criar, deletar, encontrar e atualizar clientes, conforme necessário para atender aos requisitos do domínio da aplicação.
 
-- Responsabilidade: Isolar e encapsular a lógica de negócio complexa, mantendo as entidades focadas em seus próprios estados e comportamentos.
+- A camada de serviços de domínio é onde a lógica de negócio central é criada( implementada). O ClientService na camada de domínio é responsável por encapsular e gerenciar a lógica de negócios específica ao trabalhar com clientes.
 
 - os validadores podem ser considerados parte dos serviços do domínio quando se trata de encapsular regras e lógica de negócio que precisam ser aplicadas de forma consistente em todo o sistema. Eles são responsáveis por garantir que os dados e operações respeitem as regras de negócio definidas.
 
 - Exemplo de scripts para implementar:
 
-```bash
+```
 GerenciamentoDeConta.ts
 validarTransacao.ts
 ```
 
 - exemplo:
 
-```bash
+```
 import { Cliente } from '../entities/Cliente';
 import { Conta, ContaTipoEnum } from '../entities/Conta';
 
