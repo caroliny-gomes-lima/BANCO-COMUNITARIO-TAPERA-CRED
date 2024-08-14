@@ -1,10 +1,10 @@
 {
   "type": "postgres",
-  "host": "localhost",
+  "host": "postgresdb",
   "port": 5432,
   "username": "postgres",
   "password": "0@Ff8029",
   "database": "taperaBank-db",
-  "entities": ["src/domain/models/users/**.ts"],
+  "entities": ["src/domain/models/users/ClientUserModel.ts"],
   "synchronize": true
 }

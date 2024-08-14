@@ -28,13 +28,14 @@ export class ClientController {
     try {
       const clientData =
         await this.createClientUseCase.execute(createClientDto);
-      console.log('CONTROLLER!!!!!!!!', createClientDto);
+
       return {
         satusCode: HttpStatus.CREATED,
         message: 'Cliente criado com sucesso',
         data: clientData,
       };
     } catch (error: unknown) {
+      console.error(error);
       if (error instanceof Error) {
         throw new HttpException(
           {

@@ -17,7 +17,7 @@ export class ClienteRpositoryImpl implements ClientInterface {
   ) {}
 
   async save(client: ClientUser): Promise<ClientUser> {
-    console.log('ClienteRpositoryImpl!!!!!!!!', client);
+    console.log('ClienteRpositoryImpl ########', client);
     return this.clientRepository.save(client);
   }
 }

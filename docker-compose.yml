@@ -23,7 +23,6 @@ services:
       - '5432:5432'
     restart: always
     volumes:
-      - postgres-config:/etc/postgresql
       - postgres-data:/var/lib/postgresql/data
       - ./db/backup/files/:/data_backup/
     healthcheck:
@@ -43,7 +42,9 @@ services:
     depends_on:
       postgresdb:
         condition: service_healthy
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
 
 volumes:
-  postgres-config:
   postgres-data:
+  pgadmin-data:

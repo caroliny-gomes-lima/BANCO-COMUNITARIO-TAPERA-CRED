@@ -8,20 +8,20 @@ funcione conforme o esperado.
 
 import { CreateClientDto } from '../dtos/CreateClientDto';
 import { ClientUser } from '../models/users/ClientUserModel';
-//import { UserValidator } from '../services/validator/UserValidator';
+import { UserValidator } from '../services/validator/UserValidator';
 
 export class ClientService {
   public createClient(createClientDto: CreateClientDto): ClientUser {
     // Validações
-    //this.validateClientData(createClientDto);
-    console.log('DOMAIN ClientService!!!!!!!!', createClientDto);
+    this.validateClientData(createClientDto);
+    //console.log('DOMAIN ClientService #########', createClientDto);
     // Cria e retorna um novo cliente
     return new ClientUser(
-      //createClientDto.id,
+      createClientDto.id,
       createClientDto.fullName,
-      //createClientDto.email,
-      //createClientDto.password,
-      //createClientDto.cpf,
+      createClientDto.email,
+      createClientDto.password,
+      createClientDto.cpf,
     );
   }
 
@@ -29,11 +29,12 @@ export class ClientService {
 
   // }
 
-  // private validateClientData(createClientDto: CreateClientDto): void {
-  //   //UserValidator.verifyEmail(createClientDto.email);
-  //   //UserValidator.verifyPassword(createClientDto.password);
-  //   UserValidator.isValidId(createClientDto.id);
-  //   UserValidator.isValidFullName(createClientDto.fullName);
-  //   //UserValidator.verifyCpf(createClientDto.cpf);
-  // }
+  private validateClientData(createClientDto: CreateClientDto): void {
+    //console.log('validateClientData #########', createClientDto);
+    UserValidator.verifyEmail(createClientDto.email);
+    UserValidator.verifyPassword(createClientDto.password);
+    UserValidator.isValidId(createClientDto.id);
+    UserValidator.isValidFullName(createClientDto.fullName);
+    UserValidator.verifyCpf(createClientDto.cpf);
+  }
 }

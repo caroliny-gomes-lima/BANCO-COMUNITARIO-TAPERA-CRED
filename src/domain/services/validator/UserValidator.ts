@@ -2,7 +2,7 @@
 antes de criar um novo cliente.
 Os métodos de validação garantem que os dados estão corretos 
 e que não há duplicações.*/
-//import { ClientUser } from 'src/domain/models/users/ClientUserModel';
+import { ClientUser } from 'src/domain/models/users/ClientUserModel';
 
 export class UserValidator {
   public static ERROR_ID_INVALID = 'Invalid id';
@@ -24,14 +24,18 @@ export class UserValidator {
 
   // Exemplo de validação de ID (pode ser um UUID ou outro formato)
   static isValidId(id: string): void {
+    console.log('ID VALIDATOR', id);
     if (id.length === 0) {
+      console.log('ID LENGTH', id);
       throw new Error(this.ERROR_ID_INVALID);
     }
   }
 
   // Exemplo de validação de nome completo (não pode estar vazio e deve ter pelo menos dois nomes)
   static isValidFullName(fullName: string): void {
+    console.log('FULLNAME', fullName);
     if (fullName.trim().split(' ').length < this.ACCEPTED_FULLNAME_LENGHT) {
+      console.log('FULLNAME', fullName);
       throw new Error(this.ERROR_FULLNAME_INVALID);
     }
   }
@@ -49,17 +53,17 @@ export class UserValidator {
     return true;
   }
 
-  // static checkEmailAlreadyInUse(users: ClientUser[], email: string): void {
-  //   if (users.some((user) => user.getEmail() === email)) {
-  //     throw new Error(this.ERROR_EMAIL_ALREADY_IN_USE);
-  //   }
-  // }
+  static checkEmailAlreadyInUse(users: ClientUser[], email: string): void {
+    if (users.some((user) => user.getEmail() === email)) {
+      throw new Error(this.ERROR_EMAIL_ALREADY_IN_USE);
+    }
+  }
 
-  // static checkCpfAlreadyInUse(user: ClientUser[], cpf: string): void {
-  //   if (user.some((user) => user.getCpf() === cpf)) {
-  //     throw new Error(this.ERROR_CPF_ALREADY_IN_USE);
-  //   }
-  // }
+  static checkCpfAlreadyInUse(user: ClientUser[], cpf: string): void {
+    if (user.some((user) => user.getCpf() === cpf)) {
+      throw new Error(this.ERROR_CPF_ALREADY_IN_USE);
+    }
+  }
 
   static verifyCpf(cpf: string): void {
     const cleanedCpf = cpf.replace(this.regex.cpf[0], '');

@@ -24,7 +24,7 @@ export class CreateClientUseCase implements CreateClientInterface {
   async execute(createClientDto: CreateClientDto): Promise<ClientUser> {
     const newClient = this.clientService.createClient(createClientDto);
     this.users = [...this.users, newClient];
-    console.log('!!!!!!!!', createClientDto);
+    //console.log('CreateClientUseCase newClient #######', newClient);
     return await this.clientRepository.save(newClient);
   }
 }
