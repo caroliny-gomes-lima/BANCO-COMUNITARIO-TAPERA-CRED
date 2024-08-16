@@ -1,5 +1,4 @@
-//import { PrimaryColumn } from 'typeorm';
-/*PASSO 1 - criação da classe cliente no dominio*/
+/*criação da classe cliente no dominio*/
 import { Column, Entity } from 'typeorm';
 import { User } from './UserModel';
 

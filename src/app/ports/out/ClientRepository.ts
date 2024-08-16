@@ -1,7 +1,6 @@
 /*
- Definição das portas de entrada que são interfaces com metodos 
- que definem como as requisições externas (como chamadas HTTP) 
- podem interagir com o sistema.(Como as interfaces do java)
+ Definição das portas de saida 
+(integração externa, ou seja com banco de dados ou apis externas)
  */
 import { ClientUser } from 'src/domain/models/users/ClientUserModel';
 

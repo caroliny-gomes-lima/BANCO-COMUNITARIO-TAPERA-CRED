@@ -1,5 +1,5 @@
 /*
-Definição dos useCases
+Definição dos useCases:
 Contêm a lógica de aplicação e combinam as operações necessárias, 
 chamando as portas de entrada e interagindo com as portas de saída 
 para acessar dados e executar operações em sistemas externos

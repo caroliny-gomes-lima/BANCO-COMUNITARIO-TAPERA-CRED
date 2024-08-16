@@ -1,5 +1,5 @@
 /*
-Adaptadores de saída para o banco de dados
+Adaptadores de saída para o banco de dados:
 São as implementações das interfaces da porta de saida, 
 que traduzem as chamadas internas para interações com sistemas externos. 
 Fornecem a lógica específica para interagir com bancos de dados ou serviços externos.

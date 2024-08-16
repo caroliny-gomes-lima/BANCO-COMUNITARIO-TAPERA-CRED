@@ -1,4 +1,4 @@
-/*
+/*ClientService:
 Definição do ClientService classe responsavel
 pela implementação da lógica de negócios centralizada, 
 aplicando regras e operações que garantem que a aplicação 
