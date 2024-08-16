@@ -1,7 +1,5 @@
 import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-//import { ClientUser } from 'src/domain/models/users/ClientUserModel';
-//import { ClientService } from './services/ClientService';
 import { ClientUser } from 'src/domain/models/users/ClientUserModel';
 import { ClientController } from './adapters/controllers/ClientController';
 import { ClienteRpositoryImpl } from './adapters/database/ClientRepositoryImpl';

@@ -1,5 +1,4 @@
 /*
- *PASSO 3
 Definição do ClientService classe responsavel
 pela implementação da lógica de negócios centralizada, 
 aplicando regras e operações que garantem que a aplicação 
@@ -11,23 +10,28 @@ import { ClientUser } from '../models/users/ClientUserModel';
 import { UserValidator } from '../services/validator/UserValidator';
 
 export class ClientService {
+  private clients: ClientUser[] = [];
   public createClient(createClientDto: CreateClientDto): ClientUser {
     // Validações
     this.validateClientData(createClientDto);
-    //console.log('DOMAIN ClientService #########', createClientDto);
-    // Cria e retorna um novo cliente
-    return new ClientUser(
+
+    // Cria um novo cliente
+    const newClient = new ClientUser(
       createClientDto.id,
       createClientDto.fullName,
       createClientDto.email,
       createClientDto.password,
       createClientDto.cpf,
     );
+    this.clients = [...this.clients, newClient];
+    return newClient;
   }
 
-  // public getUserById(id: string): Cliente {
-
-  // }
+  public getClientById(id: string): ClientUser {
+    const client = this.clients.find((client) => client.getId() === id);
+    console.log('client data #########', client);
+    return client;
+  }
 
   private validateClientData(createClientDto: CreateClientDto): void {
     //console.log('validateClientData #########', createClientDto);

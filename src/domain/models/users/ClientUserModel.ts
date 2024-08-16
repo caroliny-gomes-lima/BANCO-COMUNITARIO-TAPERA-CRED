@@ -17,7 +17,6 @@ export class ClientUser extends User {
     super(id, fullName, email, password);
     this.cpf = cpf;
   }
-
   public getCpf(): string {
     return this.cpf;
   }

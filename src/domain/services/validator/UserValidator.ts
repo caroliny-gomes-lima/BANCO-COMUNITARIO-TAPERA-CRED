@@ -18,8 +18,8 @@ export class UserValidator {
   private static regex = {
     email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
     password:
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-    cpf: [/[^\d]+/g, /^\d{11}$/],
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8}$/,
+    cpf: /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/,
   };
 
   // Exemplo de validação de ID (pode ser um UUID ou outro formato)
@@ -53,10 +53,11 @@ export class UserValidator {
     return true;
   }
 
-  static checkEmailAlreadyInUse(users: ClientUser[], email: string): void {
+  static checkEmailAlreadyInUse(users: ClientUser[], email: string): boolean {
     if (users.some((user) => user.getEmail() === email)) {
       throw new Error(this.ERROR_EMAIL_ALREADY_IN_USE);
     }
+    return true;
   }
 
   static checkCpfAlreadyInUse(user: ClientUser[], cpf: string): void {
@@ -66,22 +67,18 @@ export class UserValidator {
   }
 
   static verifyCpf(cpf: string): void {
-    const cleanedCpf = cpf.replace(this.regex.cpf[0], '');
-
-    if (
-      this.regex.cpf[1].test(cleanedCpf) ||
-      this.isKnownInvalidCpf(cleanedCpf)
-    ) {
+    if (!this.regex.cpf.test(cpf)) {
       throw new Error(this.ERROR_CPF_INVALID);
     }
 
-    if (!this.validateCpfDigits(cleanedCpf)) {
+    const cpfWithoutDots = cpf.replace(/[^\d]+/g, '');
+
+    if (cpfWithoutDots.length !== 11) {
       throw new Error(this.ERROR_CPF_INVALID);
     }
-  }
 
-  private static isKnownInvalidCpf(cpf: string): boolean {
-    const knownInvalidCpfs = [
+    // Verifica se o CPF é uma sequência repetida de números
+    const repeatedInvalidCpfs = [
       '00000000000',
       '11111111111',
       '22222222222',
@@ -93,36 +90,43 @@ export class UserValidator {
       '88888888888',
       '99999999999',
     ];
-    return knownInvalidCpfs.includes(cpf);
-  }
+    if (repeatedInvalidCpfs.includes(cpfWithoutDots)) {
+      throw new Error(this.ERROR_CPF_INVALID);
+    }
 
-  private static validateCpfDigits(cpf: string): boolean {
     let sum = 0;
     let remainder: number;
 
-    // calcula o primeiro digito
+    // Calcula o primeiro dígito verificador
     for (let i = 1; i <= 9; i++) {
-      sum += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+      sum += parseInt(cpfWithoutDots.substring(i - 1, i)) * (11 - i);
     }
 
     remainder = (sum * 10) % 11;
+
     if (remainder === 10 || remainder === 11) {
       remainder = 0;
     }
-    if (remainder !== parseInt(cpf.substring(9, 10))) {
-      return false;
+
+    if (remainder !== parseInt(cpfWithoutDots.substring(9, 10))) {
+      throw new Error(this.ERROR_CPF_INVALID);
     }
 
     sum = 0;
-    // calcula o segundo digito
+
+    // Calcula o segundo dígito verificador
     for (let i = 1; i <= 10; i++) {
-      sum += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+      sum += parseInt(cpfWithoutDots.substring(i - 1, i)) * (12 - i);
     }
 
     remainder = (sum * 10) % 11;
+
     if (remainder === 10 || remainder === 11) {
       remainder = 0;
     }
-    return remainder === parseInt(cpf.substring(10, 11));
+
+    if (remainder !== parseInt(cpfWithoutDots.substring(10, 11))) {
+      throw new Error(this.ERROR_CPF_INVALID);
+    }
   }
 }

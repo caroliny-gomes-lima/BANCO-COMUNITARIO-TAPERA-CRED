@@ -1,5 +1,4 @@
 /*
- *PASSO 4
 Definição dos useCases
 Contêm a lógica de aplicação e combinam as operações necessárias, 
 chamando as portas de entrada e interagindo com as portas de saída 
