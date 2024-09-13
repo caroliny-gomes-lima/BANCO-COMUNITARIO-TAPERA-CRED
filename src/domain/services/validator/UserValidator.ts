@@ -1,4 +1,5 @@
-/*criação do validator para validar os dados do cliente
+/*Validações dados do cliente: 
+criação do validator para validar os dados do cliente
 antes de criar um novo cliente.
 Os métodos de validação garantem que os dados estão corretos 
 e que não há duplicações.*/

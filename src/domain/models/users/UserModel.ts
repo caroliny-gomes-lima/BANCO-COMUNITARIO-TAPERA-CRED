@@ -1,4 +1,4 @@
-/*criação da classe cliente no dominio*/
+/*criação da classe abstrata no dominio*/
 import { Column, PrimaryGeneratedColumn } from 'typeorm';
 export abstract class User {
   @PrimaryGeneratedColumn('uuid')

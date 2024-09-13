@@ -14,9 +14,9 @@ dotenv.config();
       type: 'postgres',
       host: process.env.DB_HOST,
       port: 5432,
-      database: process.env.DATABASE_NAME,
-      username: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASS,
+      database: process.env.DATABASE_NAME, //banco de dados nome
+      username: process.env.DATABASE_USER, //usuario do postgres
+      password: process.env.DATABASE_PASS, //senha do banco de dados
       retryAttempts: 10,
       retryDelay: 3000,
       entities: [ClientUser],

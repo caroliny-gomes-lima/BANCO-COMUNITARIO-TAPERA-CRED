@@ -1,6 +1,6 @@
 /*decribe é como uma agrupador de testes com um
 breve descrição sobre do que se trata os teste*/
-
+//testes para validações
 import { ClientUser } from '../models/users/ClientUserModel';
 import { UserValidator } from '../services/validator/UserValidator';
 

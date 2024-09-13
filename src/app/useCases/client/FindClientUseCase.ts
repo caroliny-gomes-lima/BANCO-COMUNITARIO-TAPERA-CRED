@@ -1,3 +1,7 @@
+/*
+useCases:
+Contêm a lógica de aplicação encontrar o cliente
+ */
 import { Inject, Injectable } from '@nestjs/common';
 import { FindClientInterface } from 'src/app/ports/in/FindClient.usecase';
 import { ClientInterface } from 'src/app/ports/out/ClientRepository';
